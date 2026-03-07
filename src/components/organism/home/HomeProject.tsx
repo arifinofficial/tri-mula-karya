@@ -7,27 +7,27 @@ import React from 'react'
 
 const layoutConfig = [
     {
-        grid: "col-span-5 col-start-1 md:col-span-6 md:col-start-1",
+        grid: "col-span-11 col-start-1 md:col-span-6 md:col-start-1",
         aspect: "aspect-[4/3]",
     },
     {
-        grid: "col-span-5 col-start-2 md:col-span-6 md:col-start-7",
+        grid: "col-span-11 col-start-2 md:col-span-6 md:col-start-7",
         aspect: "aspect-[4/4]",
     },
     {
-        grid: "col-span-5 col-start-1 md:col-span-6 md:col-start-1",
+        grid: "col-span-11 col-start-1 md:col-span-6 md:col-start-1",
         aspect: "aspect-[4/4]",
     },
     {
-        grid: "col-span-5 col-start-2 md:col-span-5 md:col-start-8",
+        grid: "col-span-11 col-start-2 md:col-span-5 md:col-start-8",
         aspect: "aspect-[4/4]",
     },
     {
-        grid: "col-span-5 col-start-1 md:col-span-5 md:col-start-1",
+        grid: "col-span-11 col-start-1 md:col-span-5 md:col-start-1",
         aspect: "aspect-[4/4]",
     },
     {
-        grid: "col-span-5 col-start-2 md:col-span-6 md:col-start-7",
+        grid: "col-span-11 col-start-2 md:col-span-6 md:col-start-7",
         aspect: "aspect-[4/4]",
     },
 ];
@@ -43,7 +43,7 @@ const HomeProject = () => {
                     <span className='text-3xl md:text-5xl xl:text-6xl font-medium self-end'>[06]</span>
                 </div>
             </div>
-            <div className="grid grid-cols-6 md:grid-cols-12 mt-12.5 xl:mt-25 gap-4 lg:gap-8 gap-y-20 lg:gap-y-40">
+            <div className="grid grid-cols-12 mt-12.5 xl:mt-25 gap-2 lg:gap-8 gap-y-16 lg:gap-y-40">
                 {projectData.slice(0, 6).map((project, index) => {
                     const config = layoutConfig[index % 6];
 
@@ -66,22 +66,22 @@ const HomeProject = () => {
                                     </div>
                                 </div>
 
-                                <div className="flex justify-between">
-                                    <div className="flex gap-4 lg:gap-10 h-[1.3em] items-center">
-                                        <span className="text-small lg:text-lg text-foreground/70">
+                                <div className="flex justify-between items-center">
+                                    <div className="flex gap-4 lg:gap-10 h-[1.3em] lg:h-[1.2em] items-center">
+                                        <span className="text-sm lg:text-lg text-foreground/70">
                                             [{String(index + 1).padStart(2, "0")}]
                                         </span>
-                                        <span className="text-small lg:text-lg font-medium">
+                                        <span className="text-sm lg:text-lg font-medium">
                                             {project.projectName}
                                         </span>
                                     </div>
 
-                                    <div className="overflow-hidden h-[1.2lh]">
-                                        <div className="flex flex-col transition-transform duration-500 group-hover:-translate-y-[1lh] items-end">
-                                            <span className="text-small lg:text-lg font-medium">
+                                    <div className="overflow-hidden h-[1lh] lg:h-[1.2lh]">
+                                        <div className="flex flex-col transition-transform duration-500 group-hover:-translate-y-[0.8lh] lg:group-hover:-translate-y-[1lh] items-end">
+                                            <span className="text-sm lg:text-lg font-medium">
                                                 {project.projectYear}
                                             </span>
-                                            <span className="text-small lg:text-lg font-medium">
+                                            <span className="text-sm lg:text-lg font-medium">
                                                 View project →
                                             </span>
                                         </div>
@@ -96,7 +96,7 @@ const HomeProject = () => {
 
             <div className='w-full flex justify-center mt-12.5 xl:mt-25'>
                 <Link
-                    href={'/about-us'}
+                    href={'/projects'}
                     className={`text-[#1A1A19] bg-[#F8FAFC] p-2.5 px-5 flex items-center gap-2.5 text-base hover:opacity-70 transition-all duration-500 ease-in-out flex-shrink-0 w-fit`}
                 >
                     <div className="w-1.5 h-1.5 bg-[#1A1A19]"></div>

@@ -23,7 +23,7 @@ const projectData: ProjectDataType[] = [
         slug:"villa-sari-indah",
         projectName:"Villa Sari Indah",
         projectDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget dignissim magna, vel cursus ex. Fusce sollicitudin,",
-        category: "Construction",
+        category: "Architecture",
         projectYear: "2024",
         projectHero: homeHeroImg,
         projectThumbnail: homeHeroImg,
@@ -35,11 +35,10 @@ const projectData: ProjectDataType[] = [
         projectGallery : [
             homeHeroImg,
             homeAboutImgLandscape,
-            homeAboutImgPotrait,
-            homeAboutImgPotrait,
             homeHeroImg,
+            homeAboutImgPotrait,
+            homeAboutImgPotrait,
             homeAboutImgLandscape,
-            homeHeroImg,
             homeAboutImgPotrait,
             homeAboutImgPotrait,
         ]
@@ -48,7 +47,7 @@ const projectData: ProjectDataType[] = [
         slug:"villa-sari-indah1",
         projectName:"Villa Sari Indah",
         projectDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget dignissim magna, vel cursus ex. Fusce sollicitudin,",
-        category: "Construction",
+        category: "Interior Design",
         projectYear: "2024",
         projectHero: homeHeroImg,
         projectThumbnail: homeHeroImg,
@@ -60,11 +59,10 @@ const projectData: ProjectDataType[] = [
         projectGallery : [
             homeHeroImg,
             homeAboutImgLandscape,
-            homeAboutImgPotrait,
-            homeAboutImgPotrait,
             homeHeroImg,
+            homeAboutImgPotrait,
+            homeAboutImgPotrait,
             homeAboutImgLandscape,
-            homeHeroImg,
             homeAboutImgPotrait,
             homeAboutImgPotrait,
         ]
@@ -85,11 +83,10 @@ const projectData: ProjectDataType[] = [
         projectGallery : [
             homeHeroImg,
             homeAboutImgLandscape,
-            homeAboutImgPotrait,
-            homeAboutImgPotrait,
             homeHeroImg,
+            homeAboutImgPotrait,
+            homeAboutImgPotrait,
             homeAboutImgLandscape,
-            homeHeroImg,
             homeAboutImgPotrait,
             homeAboutImgPotrait,
         ]
@@ -110,11 +107,10 @@ const projectData: ProjectDataType[] = [
         projectGallery : [
             homeHeroImg,
             homeAboutImgLandscape,
-            homeAboutImgPotrait,
-            homeAboutImgPotrait,
             homeHeroImg,
+            homeAboutImgPotrait,
+            homeAboutImgPotrait,
             homeAboutImgLandscape,
-            homeHeroImg,
             homeAboutImgPotrait,
             homeAboutImgPotrait,
         ]
@@ -135,11 +131,10 @@ const projectData: ProjectDataType[] = [
         projectGallery : [
             homeHeroImg,
             homeAboutImgLandscape,
-            homeAboutImgPotrait,
-            homeAboutImgPotrait,
             homeHeroImg,
+            homeAboutImgPotrait,
+            homeAboutImgPotrait,
             homeAboutImgLandscape,
-            homeHeroImg,
             homeAboutImgPotrait,
             homeAboutImgPotrait,
         ]
@@ -160,11 +155,10 @@ const projectData: ProjectDataType[] = [
         projectGallery : [
             homeHeroImg,
             homeAboutImgLandscape,
-            homeAboutImgPotrait,
-            homeAboutImgPotrait,
             homeHeroImg,
+            homeAboutImgPotrait,
+            homeAboutImgPotrait,
             homeAboutImgLandscape,
-            homeHeroImg,
             homeAboutImgPotrait,
             homeAboutImgPotrait,
         ]
@@ -185,11 +179,10 @@ const projectData: ProjectDataType[] = [
         projectGallery : [
             homeHeroImg,
             homeAboutImgLandscape,
-            homeAboutImgPotrait,
-            homeAboutImgPotrait,
             homeHeroImg,
+            homeAboutImgPotrait,
+            homeAboutImgPotrait,
             homeAboutImgLandscape,
-            homeHeroImg,
             homeAboutImgPotrait,
             homeAboutImgPotrait,
         ]
@@ -210,11 +203,10 @@ const projectData: ProjectDataType[] = [
         projectGallery : [
             homeHeroImg,
             homeAboutImgLandscape,
-            homeAboutImgPotrait,
-            homeAboutImgPotrait,
             homeHeroImg,
+            homeAboutImgPotrait,
+            homeAboutImgPotrait,
             homeAboutImgLandscape,
-            homeHeroImg,
             homeAboutImgPotrait,
             homeAboutImgPotrait,
         ]

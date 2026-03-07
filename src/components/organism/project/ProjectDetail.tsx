@@ -88,7 +88,7 @@ const ProjectDetail = ({ data }: ProjectDetailHeroProps) => {
                     </div>
 
                     {/* Base overlay */}
-                    <div className='absolute inset-0 bg-black/20' style={{ zIndex: 10 }} />
+                    <div className='absolute inset-0 bg-black/30' style={{ zIndex: 10 }} />
 
                     {/* Scroll-driven dark overlay */}
                     <div
@@ -113,7 +113,7 @@ const ProjectDetail = ({ data }: ProjectDetailHeroProps) => {
                                     {data.projectDesc}
                                 </p>
                             </div>
-                            <div className='lg:col-span-5 lg:col-start-8 xl:col-span-5 xl:col-start-8'>
+                            <div className='lg:col-span-5 lg:col-start-8 xl:col-span-6 xl:col-start-7 2xl:col-span-5 2xl:col-start-8'>
                                 <div className='grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-8'>
                                     <div className='flex flex-col gap-2'>
                                         <span className='text-sm md:text-base'>Date Completed</span>
@@ -133,8 +133,31 @@ const ProjectDetail = ({ data }: ProjectDetailHeroProps) => {
                     </div>
                 </div>
             </section>
-            <section className='h-screen bg-primary z-10 relative'>
+            <section className="bg-primary z-10 relative py-25 px-9 xl:px-21">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-8">
+                    {data.projectGallery.map((image, index) => {
+                        const isThird = index % 3 === 2;
 
+                        return (
+                            <div
+                                key={index}
+                                className={
+                                    isThird
+                                        ? "col-span-1 md:col-span-12"
+                                        : "col-span-1 md:col-span-6"
+                                }
+                            >
+                                <Image
+                                    src={image}
+                                    alt=""
+                                    width={800}
+                                    height={600}
+                                    className="w-full h-auto object-cover"
+                                />
+                            </div>
+                        );
+                    })}
+                </div>
             </section>
         </>
     )

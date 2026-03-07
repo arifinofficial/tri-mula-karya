@@ -5,7 +5,9 @@ import homeHeroImg from "@/assets/image/home-hero-img.webp";
 import homeAboutImgPotrait from "@/assets/image/about-img-potrait.webp";
 import homeAboutImgLandscape from "@/assets/image/about-img-landscape.webp";
 
+import aboutArrow from "@/assets/image/arrow.png";
+
 export {
     logo, logoBlack, homeHeroImg,
-    homeAboutImgPotrait, homeAboutImgLandscape
+    homeAboutImgPotrait, homeAboutImgLandscape, aboutArrow
 }

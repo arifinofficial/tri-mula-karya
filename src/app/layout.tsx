@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Navbar } from "@/components/organism/global/Navbar";
 import { ReactLenis } from 'lenis/react'
+import Footer from "@/components/organism/global/Footer";
 
 const switzer = localFont({
   src: [
@@ -65,6 +66,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <Footer/>
         </ReactLenis>
       </body>
     </html>

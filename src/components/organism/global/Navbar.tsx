@@ -305,7 +305,7 @@ export const Navbar = () => {
                                     <div key={label} className="overflow-hidden">
                                         <Link
                                             href={href}
-                                            className={`block ${textColor} text-base hover:bg-[#D4D5D7] transition-all duration-500 ease-in-out ${(slideItems || isMenuActive) ? 'translate-y-[200%] opacity-0' : 'translate-y-0 opacity-100'}`}
+                                            className={`block ${textColor} relative before:absolute before:left-0 before:bottom-0 before:h-px before:w-full before:bg-[#F8FAFC] before:scale-x-0 before:origin-right before:transition-transform before:duration-300 hover:before:scale-x-100 hover:before:origin-left text-base hover:bg-[#D4D5D7] transition-all duration-500 ease-in-out ${(slideItems || isMenuActive) ? 'translate-y-[200%] opacity-0' : 'translate-y-0 opacity-100'}`}
                                             style={{
                                                 transitionDelay: (slideItems || isMenuActive)
                                                     ? `${index * 60}ms`
@@ -360,7 +360,7 @@ export const Navbar = () => {
                             onClick={handleLogoClick}
                             className={`block transition-all duration-500 ease-in-out ${slideItems ? 'translate-y-[200%] opacity-0' : 'translate-y-0 opacity-100'}`}
                         >
-                            <Image src={currentLogo} alt="Logo Desa Bali Padel" className='w-[3.5rem] lg:w-[4.5rem] xl:w-[5rem] transition-all duration-300' />
+                            <Image src={currentLogo} alt="Logo Tri Mula Karya" className='w-[3.5rem] lg:w-[4.5rem] xl:w-[5rem] transition-all duration-300' />
                         </Link>
                     </div>
 
@@ -374,7 +374,7 @@ export const Navbar = () => {
                                     <div key={label} className="overflow-hidden">
                                         <Link
                                             href={href}
-                                            className={`block ${textColor} text-base hover:bg-[#D4D5D7] transition-all duration-500 ease-in-out ${(slideItems || isMenuActive) ? 'translate-y-[200%] opacity-0' : 'translate-y-0 opacity-100'}`}
+                                            className={`block ${textColor} relative before:absolute before:left-0 before:bottom-0 before:h-px before:w-full before:bg-[#F8FAFC] before:scale-x-0 before:origin-right before:transition-transform before:duration-300 hover:before:scale-x-100 hover:before:origin-left text-base transition-all duration-500 ease-in-out ${(slideItems || isMenuActive) ? 'translate-y-[200%] opacity-0' : 'translate-y-0 opacity-100'}`}
                                             style={{
                                                 transitionDelay: (slideItems || isMenuActive)
                                                     ? `${index * 60}ms`
