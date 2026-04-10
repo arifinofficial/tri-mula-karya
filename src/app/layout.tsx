@@ -4,6 +4,8 @@ import "./globals.css";
 import { Navbar } from "@/components/organism/global/Navbar";
 import { ReactLenis } from 'lenis/react'
 import Footer from "@/components/organism/global/Footer";
+import PageTransitionProvider from "@/context/PageTransitionProvider";
+import LenisProvider from "@/providers/LenisProvider";
 
 const switzer = localFont({
   src: [
@@ -53,21 +55,13 @@ export default function RootLayout({
       <body
         className={`${switzer.variable} antialiased`}
       >
-        <ReactLenis
-          root
-          options={{
-            lerp: 0.1,          // semakin kecil => semakin smooth (0.1–0.2 enak)
-            duration: 1.4,      // durasi interpolasi scroll
-            smoothWheel: true,  // aktifkan smooth untuk wheel (mouse)
-            touchMultiplier: 1.5, // percepat swipe di mobile
-            wheelMultiplier: 1,   // percepat/lamain scroll wheel
-            syncTouch: false,     // kalau true, drag jari langsung sync ke scroll
-          }}
-        >
-          <Navbar />
-          {children}
-          <Footer/>
-        </ReactLenis>
+        <PageTransitionProvider>
+          <LenisProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </LenisProvider>
+        </PageTransitionProvider>
       </body>
     </html>
   );

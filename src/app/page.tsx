@@ -1,3 +1,5 @@
+// import PageTransition from "@/components/atoms/PageTransition";
+import PageTransition from "@/components/atoms/PageTransition";
 import CTA from "@/components/organism/global/CTA";
 import HomeAbout from "@/components/organism/home/HomeAbout";
 import HomeExpertise from "@/components/organism/home/HomeExpertise";
@@ -7,12 +9,14 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="">
-      <HomeHero/>
-      <HomeAbout/>
-      <HomeProject/>
-      <HomeExpertise/>
-      <CTA/>
-    </main>
+    <PageTransition>
+      <main className="">
+        <HomeHero />
+        <HomeAbout />
+        <HomeProject />
+        <HomeExpertise />
+        <CTA />
+      </main>
+    </PageTransition>
   );
 }

@@ -1,10 +1,11 @@
+import PageTransition from "@/components/atoms/PageTransition";
 import PressList from "@/components/organism/press/PressList";
 
 
 export default function PressPage() {
     return (
-        <main>
+        <PageTransition>
             <PressList/>
-        </main>
+        </PageTransition>
     );
 }
