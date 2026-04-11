@@ -325,6 +325,7 @@ import projectListData from "@/data/projects/projectListData";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import TransitionLink from "@/components/atoms/TransitionLink";
 
 const layoutConfig = [
     {
@@ -562,7 +563,7 @@ const ProjectList = () => {
                                     style={{ opacity: 0 }}
                                     className={`project-item ${config.grid}`}
                                 >
-                                    <Link href={`/projects/${project.slug}`} className="group">
+                                    <TransitionLink href={`/projects/${project.slug}`} className="group">
                                         <div className="relative mb-5">
                                             <Image
                                                 src={project.projectThumbnail}
@@ -600,7 +601,7 @@ const ProjectList = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                    </Link>
+                                    </TransitionLink>
                                 </div>
                             );
                         })}

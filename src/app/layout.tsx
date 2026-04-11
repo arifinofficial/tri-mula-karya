@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Navbar } from "@/components/organism/global/Navbar";
+import { LoadingScreen } from "@/components/organism/global/LoadingScreen";
 import { ReactLenis } from 'lenis/react'
-import Footer from "@/components/organism/global/Footer";
 import PageTransitionProvider from "@/context/PageTransitionProvider";
 import LenisProvider from "@/providers/LenisProvider";
 
@@ -57,9 +57,10 @@ export default function RootLayout({
       >
         <PageTransitionProvider>
           <LenisProvider>
+            <LoadingScreen />
             <Navbar />
             {children}
-            <Footer />
+            
           </LenisProvider>
         </PageTransitionProvider>
       </body>

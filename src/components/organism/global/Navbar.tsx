@@ -1,6 +1,6 @@
 "use client";
 
-import { logo, logoBlack } from '@/assets'
+import { logo, logoBlack, homeHeroImg } from '@/assets'
 import TransitionLink from '@/components/atoms/TransitionLink';
 import Image from 'next/image'
 import Link from 'next/link';
@@ -199,7 +199,7 @@ export const Navbar = () => {
 
                 {/* Full Navigation Overlay */}
                 <div
-                    className={`fullNav fixed inset-0 bg-[#F8FAFC] z-[90] transition-all duration-700 overflow-x-hidden ease-in-out overflow-scroll ${!isOpen && !isAnimating ? 'pointer-events-none' : ''}`}
+                    className={`fullNav fixed inset-0 bg-[#F8FAFC] z-[90] transition-all duration-700 overflow-hidden ease-in-out ${!isOpen && !isAnimating ? 'pointer-events-none' : ''}`}
                     style={{
                         clipPath: (isOpen && isAnimating)
                             ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'
@@ -207,33 +207,48 @@ export const Navbar = () => {
                         visibility: isOpen || isAnimating ? 'visible' : 'hidden'
                     }}
                 >
-                    <div className="flex flex-col h-full pt-24 px-[2.25rem]">
-                        <div className="flex-1">
-                            {navLinks.map((item, index) => (
-                                <div key={item.label} className="border-b border-[#1A1A19]/20 last:border-b-0">
-                                    <TransitionLink
-                                        href={item.href}
-                                        onClick={toggleMenu}
-                                        className={`block py-6 text-[#1A1A19] text-lg transition-all duration-500 ease-out ${(isOpen && isAnimating) ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}
-                                        style={{ transitionDelay: (isOpen && isAnimating) ? `${200 + (index * 100)}ms` : '0ms' }}
-                                    >
-                                        {item.label}
-                                    </TransitionLink>
-                                </div>
-                            ))}
+                    <div className="flex h-full">
+                        {/* Left image — desktop only */}
+                        <div className="hidden lg:flex flex-col w-[42%] shrink-0 pt-[7.5rem] pb-10 pl-[5.25rem] pr-8">
+                            <div
+                                className="relative flex-1 overflow-hidden transition-all duration-700 ease-in-out"
+                                style={{
+                                    clipPath: (isOpen && isAnimating)
+                                        ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'
+                                        : 'polygon(0 0, 100% 0, 100% 0, 0 0)',
+                                    transitionDelay: (isOpen && isAnimating) ? '400ms' : '0ms'
+                                }}
+                            >
+                                <Image src={homeHeroImg} alt="Navigation background" className="object-cover h-full w-full" />
+                            </div>
                         </div>
-                        <div className="pb-8">
-                            <h3
-                                className={`text-[#1A1A19] text-sm mb-4 transition-all duration-500 ease-out ${(isOpen && isAnimating) ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}
-                                style={{ transitionDelay: (isOpen && isAnimating) ? '700ms' : '0ms' }}
-                            >Social</h3>
-                            <div className="flex flex-row gap-6">
+
+                        {/* Right content */}
+                        <div className="flex flex-col flex-1 pt-24 lg:pt-[7.5rem] pb-10 px-[2.25rem] xl:px-[5.25rem] overflow-y-auto">
+                            {/* Nav links */}
+                            <div className="flex-1">
+                                {navLinks.map((item, index) => (
+                                    <div key={item.label} className="border-b hover:pl-5 lg:hover:pl-10 duration-500 ease-in-out border-[#1A1A19]/20">
+                                        <TransitionLink
+                                            href={item.href}
+                                            onClick={toggleMenu}
+                                            className={`block py-7 text-[#1A1A19] text-4xl lg:text-5xl font-normal transition-all duration-500 ease-out ${(isOpen && isAnimating) ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}
+                                            style={{ transitionDelay: (isOpen && isAnimating) ? `${200 + (index * 100)}ms` : '0ms' }}
+                                        >
+                                            {item.label}
+                                        </TransitionLink>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Social links */}
+                            <div className="flex flex-row gap-8 mt-8">
                                 {socialLinks.map((social, index) => (
                                     <Link
                                         key={social.name}
                                         href={social.href}
-                                        className={`text-[#1A1A19] text-sm font-normal hover:opacity-70 transition-all duration-500 ease-out ${(isOpen && isAnimating) ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}
-                                        style={{ transitionDelay: (isOpen && isAnimating) ? `${800 + (index * 50)}ms` : '0ms' }}
+                                        className={`text-[#1A1A19] text-sm font-normal hover:opacity-70 transition-all duration-500 ease-out ${(isOpen && isAnimating) ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+                                        style={{ transitionDelay: (isOpen && isAnimating) ? `${500 + (index * 60)}ms` : '0ms' }}
                                     >
                                         {social.name}
                                     </Link>

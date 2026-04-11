@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import pressListData from "@/data/press/pressListData";
 import pressData from "@/data/press/pressData";
+import TransitionLink from "@/components/atoms/TransitionLink";
 // const layoutConfig = [
 //     {
 //         grid: "col-span-11 col-start-1 md:col-span-6 md:col-start-1",
@@ -239,7 +240,7 @@ const PressList = () => {
                                     style={{ opacity: 0 }}
                                     className={`press-item col-span-12 lg:col-span-6 border-b border-foreground/30 pb-6 lg:pb-16`}
                                 >
-                                    <Link href={`/press/${article.slug}`} className="group flex flex-row gap-4 lg:gap-8">
+                                    <TransitionLink href={`/press/${article.slug}`} className="group flex flex-row gap-4 lg:gap-8">
                                         <div className="relative w-[300px] lg:w-[400px]">
                                             <Image
                                                 src={article.pressThumbnail}
@@ -269,7 +270,7 @@ const PressList = () => {
                                                 {article.location} {article.date}
                                             </span>
                                         </div>
-                                    </Link>
+                                    </TransitionLink>
                                 </div>
                             );
                         })}

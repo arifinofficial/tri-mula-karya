@@ -15,7 +15,7 @@ const footerData = {
             },
             {
                 label: "About Us",
-                url: "/about"
+                url: "/about-us"
             },
             {
                 label: "Contact Us",

@@ -1,3 +1,4 @@
+import TransitionLink from '@/components/atoms/TransitionLink'
 import footerData from '@/data/global/footerData'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -17,7 +18,7 @@ const Footer = () => {
                     <span className='text-small md:text-base block mb-3.75 text-foreground/70'>{footerData.nav.label}</span>
                     <div className='flex flex-col gap-4 lg:gap-8'>
                         {footerData.nav.navItems.map((item, index) => (
-                            <Link
+                            <TransitionLink
                                 href={item.url}
                                 key={index}
                                 className="
@@ -38,7 +39,7 @@ const Footer = () => {
                                 "
                             >
                                 {item.label}
-                            </Link>
+                            </TransitionLink>
                         ))}
                     </div>
                 </div>

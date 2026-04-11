@@ -1,4 +1,5 @@
 import { homeHeroImg } from '@/assets'
+import TransitionLink from '@/components/atoms/TransitionLink'
 import projectData from '@/data/global/projectData'
 import homeProjectData from '@/data/home/homeProjectData'
 import Image from 'next/image'
@@ -49,7 +50,7 @@ const HomeProject = () => {
 
                     return (
                         <div key={index} className={config.grid}>
-                            <Link href={`/projects/${project.slug}`} className="group">
+                            <TransitionLink href={`/projects/${project.slug}`} className="group">
                                 <div className='relative mb-5'>
                                     <Image
                                         src={project.projectThumbnail}
@@ -88,20 +89,20 @@ const HomeProject = () => {
                                     </div>
                                 </div>
 
-                            </Link>
+                            </TransitionLink>
                         </div>
                     );
                 })}
             </div>
 
             <div className='w-full flex justify-center mt-12.5 xl:mt-25'>
-                <Link
+                <TransitionLink
                     href={'/projects'}
                     className={`text-[#1A1A19] bg-[#F8FAFC] p-2.5 px-5 flex items-center gap-2.5 text-base hover:opacity-70 transition-all duration-500 ease-in-out flex-shrink-0 w-fit`}
                 >
                     <div className="w-1.5 h-1.5 bg-[#1A1A19]"></div>
                     View All Projects
-                </Link>
+                </TransitionLink>
             </div>
         </section>
     )
