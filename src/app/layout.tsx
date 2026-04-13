@@ -3,9 +3,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Navbar } from "@/components/organism/global/Navbar";
 import { LoadingScreen } from "@/components/organism/global/LoadingScreen";
-import { ReactLenis } from 'lenis/react'
-import PageTransitionProvider from "@/context/PageTransitionProvider";
 import LenisProvider from "@/providers/LenisProvider";
+import { TransitionOverlay } from "@/components/atoms/TransitionOverlay";
+import { PageTransitionProvider } from "@/context/PageTransitionContext";
 
 const switzer = localFont({
   src: [
@@ -60,8 +60,9 @@ export default function RootLayout({
             <LoadingScreen />
             <Navbar />
             {children}
-            
+
           </LenisProvider>
+          <TransitionOverlay />
         </PageTransitionProvider>
       </body>
     </html>

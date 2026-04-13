@@ -3,10 +3,11 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 // import projectData from "@/data/global/projectData";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 import pressListData from "@/data/press/pressListData";
 import pressData from "@/data/press/pressData";
-import TransitionLink from "@/components/atoms/TransitionLink";
+import Link from "next/link";
+import { TransitionLink } from "@/components/atoms/TransitionLink";
 // const layoutConfig = [
 //     {
 //         grid: "col-span-11 col-start-1 md:col-span-6 md:col-start-1",

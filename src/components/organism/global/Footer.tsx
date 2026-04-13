@@ -1,4 +1,4 @@
-import TransitionLink from '@/components/atoms/TransitionLink'
+import { TransitionLink } from '@/components/atoms/TransitionLink'
 import footerData from '@/data/global/footerData'
 import Image from 'next/image'
 import Link from 'next/link'

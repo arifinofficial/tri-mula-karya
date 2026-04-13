@@ -325,7 +325,7 @@ import projectListData from "@/data/projects/projectListData";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import TransitionLink from "@/components/atoms/TransitionLink";
+import { TransitionLink } from "@/components/atoms/TransitionLink";
 
 const layoutConfig = [
     {

@@ -1,41 +1,49 @@
-"use client";
+// app/components/TransitionLink.tsx
+'use client'
 
-import Link from "next/link";
-import { usePageTransition } from "@/context/PageTransitionProvider";
-import { forwardRef, ComponentPropsWithoutRef } from "react";
+import Link, { LinkProps } from 'next/link'
+import { useRouter, usePathname } from 'next/navigation'
+import { usePageTransition } from '@/context/PageTransitionContext' 
+import { ReactNode, MouseEvent, AnchorHTMLAttributes } from 'react'
 
-interface TransitionLinkProps extends ComponentPropsWithoutRef<typeof Link> {
-  // Tidak perlu mendefinisikan href dan children lagi karena sudah di-extend dari Link props
-}
-
-const TransitionLink = forwardRef<HTMLAnchorElement, TransitionLinkProps>(
-  ({ href, onClick, children, ...restProps }, ref) => {
-    const { navigateTo } = usePageTransition();
-
-    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-      e.preventDefault();
-      
-      // Panggil onClick original jika ada
-      if (onClick) {
-        onClick(e);
-      }
-      
-      navigateTo(href as string);
-    };
-
-    return (
-      <Link
-        href={href}
-        ref={ref}
-        onClick={handleClick}
-        {...restProps}
-      >
-        {children}
-      </Link>
-    );
+type TransitionLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> &
+  Omit<LinkProps, 'href'> & {
+    href: string
+    children: ReactNode
+    className?: string
   }
-);
 
-TransitionLink.displayName = "TransitionLink";
+export const TransitionLink = ({ href, children, className, onClick, ...rest }: TransitionLinkProps) => {
+  const router = useRouter()
+  const pathname = usePathname()
+  const { startTransition, isTransitioning } = usePageTransition()
 
-export default TransitionLink;
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+
+    // Same page: just call onClick (e.g. close nav) and skip navigation
+    if (pathname === href) {
+      onClick?.(e)
+      return
+    }
+
+    onClick?.(e)
+
+    if (isTransitioning) return
+
+    startTransition(() => {
+      router.push(href)
+    })
+  }
+
+  return (
+    <Link 
+      href={href} 
+      onClick={handleClick}
+      className={className}
+      {...rest}
+    >
+      {children}
+    </Link>
+  )
+}

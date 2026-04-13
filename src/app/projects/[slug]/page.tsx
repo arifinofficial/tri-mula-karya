@@ -1,4 +1,3 @@
-import PageTransition from "@/components/atoms/PageTransition";
 import Footer from "@/components/organism/global/Footer";
 import ProjectDetail from "@/components/organism/project/ProjectDetail";
 import projectData from "@/data/global/projectData";
@@ -15,9 +14,9 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     if (!project) notFound();
 
     return (
-        <PageTransition>
+        <>
             <ProjectDetail data={project} />
             <Footer/>
-        </PageTransition>
+        </>
     );
 }

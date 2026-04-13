@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { ReactLenis, useLenis } from "lenis/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { usePageTransition } from "@/context/PageTransitionContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,6 +12,17 @@ function ScrollTriggerSync() {
   const lenis = useLenis(() => {
     ScrollTrigger.update();
   });
+
+  const { isTransitioning } = usePageTransition();
+
+  useEffect(() => {
+    if (!lenis) return;
+    if (isTransitioning) {
+      lenis.stop();
+    } else {
+      lenis.start();
+    }
+  }, [lenis, isTransitioning]);
 
   useEffect(() => {
     if (!lenis) return;

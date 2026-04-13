@@ -1,4 +1,4 @@
-import { homeAboutImgLandscape, homeAboutImgPotrait, homeHeroImg } from "@/assets";
+import { architecture, construction, interior } from "@/assets";
 
 const homeExpertiseData = {
     preTitle : "[ Expertise ]",
@@ -6,19 +6,15 @@ const homeExpertiseData = {
     expertiseItems: [
         {
             label: "Architectural Design",
-            image: homeHeroImg,
+            image: architecture,
         },
         {
             label: "Construction",
-            image: homeAboutImgLandscape,
+            image: construction,
         },
         {
             label: "Interior Design",
-            image: homeAboutImgPotrait,
-        },
-        {
-            label: "Custom Furniture",
-            image: homeAboutImgLandscape,
+            image: interior,
         },
     ]
 

@@ -1,18 +1,42 @@
 "use client";
 
 import { logo, logoBlack, homeHeroImg } from '@/assets'
-import TransitionLink from '@/components/atoms/TransitionLink';
+import { TransitionLink } from '@/components/atoms/TransitionLink';
 import Image from 'next/image'
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import { usePathname } from 'next/navigation'
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
     const [isAnimating, setIsAnimating] = useState<boolean>(false)
     const [isMounted, setIsMounted] = useState<boolean>(false)
     const [isScrolled, setIsScrolled] = useState<boolean>(false)
+    const [isInstantClose, setIsInstantClose] = useState<boolean>(false)
+    const pathname = usePathname()
+    const isFirstRender = useRef(true)
 
     useEffect(() => { setIsMounted(true) }, [])
+
+    // Instantly close fullscreen nav when route changes (after page transition navigates)
+    useEffect(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false
+            return
+        }
+        // Suppress CSS transitions so nav disappears instantly behind the overlay
+        setIsInstantClose(true)
+        setIsOpen(false)
+        setIsAnimating(false)
+    }, [pathname])
+
+    // Reset instant-close flag after one rendered frame
+    useEffect(() => {
+        if (isInstantClose) {
+            const id = requestAnimationFrame(() => setIsInstantClose(false))
+            return () => cancelAnimationFrame(id)
+        }
+    }, [isInstantClose])
 
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 50)
@@ -87,13 +111,13 @@ export const Navbar = () => {
 
                             {/* Get In Touch — hidden when menu open */}
                             <div className="overflow-hidden">
-                                <TransitionLink
+                                <Link
                                     href={'/contact'}
                                     className={`text-[#1A1A19] bg-[#F8FAFC] p-2.5 px-5 flex items-center gap-2.5 text-base hover:bg-[#D4D5D7] transition-all duration-500 ease-in-out flex-shrink-0 ${isMenuActive ? 'translate-y-[200%] opacity-0' : 'translate-y-0 opacity-100'}`}
                                 >
                                     <div className="w-1.5 h-1.5 bg-[#1A1A19]"></div>
                                     Get In Touch
-                                </TransitionLink>
+                                </Link>
                             </div>
                         </div>
 
@@ -199,7 +223,7 @@ export const Navbar = () => {
 
                 {/* Full Navigation Overlay */}
                 <div
-                    className={`fullNav fixed inset-0 bg-[#F8FAFC] z-[90] transition-all duration-700 overflow-hidden ease-in-out ${!isOpen && !isAnimating ? 'pointer-events-none' : ''}`}
+                    className={`fullNav fixed inset-0 bg-[#F8FAFC] z-[90] overflow-hidden ease-in-out ${isInstantClose ? 'transition-none' : 'transition-all duration-700'} ${!isOpen && !isAnimating ? 'pointer-events-none' : ''}`}
                     style={{
                         clipPath: (isOpen && isAnimating)
                             ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'
@@ -211,7 +235,7 @@ export const Navbar = () => {
                         {/* Left image — desktop only */}
                         <div className="hidden lg:flex flex-col w-[42%] shrink-0 pt-[7.5rem] pb-10 pl-[5.25rem] pr-8">
                             <div
-                                className="relative flex-1 overflow-hidden transition-all duration-700 ease-in-out"
+                                className={`relative flex-1 overflow-hidden ease-in-out ${isInstantClose ? 'transition-none' : 'transition-all duration-700'}`}
                                 style={{
                                     clipPath: (isOpen && isAnimating)
                                         ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'
@@ -231,7 +255,7 @@ export const Navbar = () => {
                                     <div key={item.label} className="border-b hover:pl-5 lg:hover:pl-10 duration-500 ease-in-out border-[#1A1A19]/20">
                                         <TransitionLink
                                             href={item.href}
-                                            onClick={toggleMenu}
+                                            onClick={pathname === item.href ? toggleMenu : undefined}
                                             className={`block py-7 text-[#1A1A19] text-4xl lg:text-5xl font-normal transition-all duration-500 ease-out ${(isOpen && isAnimating) ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}
                                             style={{ transitionDelay: (isOpen && isAnimating) ? `${200 + (index * 100)}ms` : '0ms' }}
                                         >

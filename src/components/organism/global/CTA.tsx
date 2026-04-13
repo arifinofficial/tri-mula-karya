@@ -9,12 +9,12 @@ const CTA = () => {
             <div className='relative'>
                 <ImageParallax
                     src={ctaData.imageBg}
-                    alt="Desa Bali Padel CTA"
+                    alt="Tri Mula Karya - image"
                     className="w-full h-[90vh] lg:h-[100vh]"
                     containerClassName='h-full'
                 />
 
-                <div className='absolute top-0 left-0 h-full w-full flex items-center justify-center bg-primary/20'>
+                <div className='absolute top-0 left-0 h-full w-full flex items-center justify-center bg-primary/40'>
                     <div className='w-10/12 lg:w-8/12 flex flex-col gap-12.5 items-center'>
                         <h2 className='font-medium text-4xl md:text-6xl 2xl:text-[5rem] leading-[130%] text-center'>
                             {ctaData.title}
