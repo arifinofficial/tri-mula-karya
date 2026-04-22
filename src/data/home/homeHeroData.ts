@@ -1,9 +1,9 @@
 import { homeHeroImg } from "@/assets";
 
 const homeHeroData = {
-    title: "Transform Your Vision Into Reality",
-    desc: "The Tri Mula Karya style is defined by strong, solid forms with subtle elegance, natural balance and enduring appeal",
-    imageBg : homeHeroImg
-}
+  title: "The Blueprint of Your Vision, Built to Perfection",
+  desc: "Bringing your dream property to life through seamless design and construction.",
+  imageBg: homeHeroImg,
+};
 
 export default homeHeroData;
