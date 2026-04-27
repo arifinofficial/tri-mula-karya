@@ -6,6 +6,7 @@ import { LoadingScreen } from "@/components/organism/global/LoadingScreen";
 import LenisProvider from "@/providers/LenisProvider";
 import { TransitionOverlay } from "@/components/atoms/TransitionOverlay";
 import { PageTransitionProvider } from "@/context/PageTransitionContext";
+import WhatsappFloat from "@/components/atoms/WhatsappFloat";
 
 const switzer = localFont({
   src: [
@@ -60,6 +61,7 @@ export default function RootLayout({
             <LoadingScreen />
             <Navbar />
             {children}
+            <WhatsappFloat />
 
           </LenisProvider>
           <TransitionOverlay />

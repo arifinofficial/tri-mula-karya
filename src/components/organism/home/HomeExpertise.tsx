@@ -3,6 +3,7 @@ import homeExpertiseData from '@/data/home/homeExpertiseData';
 import Image from 'next/image';
 import React, { useCallback, useEffect, useRef } from 'react'
 import { gsap } from 'gsap';
+import { TransitionLink } from '@/components/atoms/TransitionLink';
 
 const HomeExpertise = () => {
     // ========================================== All Refs =========================================
@@ -20,7 +21,7 @@ const HomeExpertise = () => {
         minimumIntegerDigits: 2,
     });
 
-    
+
     useEffect(() => {
         const imgContainer = imgContainerRef.current;
 
@@ -79,7 +80,7 @@ const HomeExpertise = () => {
         []
     );
 
-    
+
     useEffect(() => {
         const cleanupFunctions: (() => void)[] = [];
 
@@ -240,7 +241,7 @@ const HomeExpertise = () => {
                     <h2 className='text-3xl md:text-5xl xl:text-6xl font-medium'>{homeExpertiseData.title}</h2>
                 </div>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-8 mt-12.5 xl:mt-37.5'>
+            <div className='hidden md:grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-8 mt-12.5 xl:mt-37.5'>
                 <div className='md:col-span-4'>
                     <div ref={imgContainerRef} className="relative overflow-hidden md:w-full h-full">
                         <Image
@@ -268,7 +269,7 @@ const HomeExpertise = () => {
 
                 <div className='md:col-span-5 md:col-start-6 mt-12.5 md:mt-0'>
                     {homeExpertiseData.expertiseItems.map((eachLink, index) => (
-                        <div key={`link-${index + 1}`}>
+                        <TransitionLink href={eachLink.link} key={`link-${index + 1}`}>
                             <div>
                                 <div
                                     ref={(el) => { containerRefs.current[index] = el; }}
@@ -279,7 +280,7 @@ const HomeExpertise = () => {
                                         className="absolute left-0 right-0 bg-[#F8FAFC] z-0 h-full origin-top scale-y-0"
                                     />
                                     <div className="relative z-10 flex items-center gap-4 py-4 lg:py-6 justify-between" ref={(el) => { linkWrapperClass.current[index] = el; }}>
-                                        <div className='flex flex-row gap-x-20'>
+                                        <div className='flex flex-row gap-x-10 lg:gap-x-20'>
                                             <div
                                                 ref={(el) => { numberRefs.current[index] = el; }}
                                                 className="text-sm text-[#F8FAFC]"
@@ -296,9 +297,29 @@ const HomeExpertise = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </TransitionLink>
                     ))}
                 </div>
+
+            </div>
+            {/* mobile */}
+            <div className='md:hidden grid grid-cols-1 mt-12.5'>
+                {homeExpertiseData.expertiseItems.map((eachLink, index) => (
+                    <TransitionLink href={eachLink.link} key={index}
+                        className='w-full relative group'>
+                        <div className='overflow-hidden relative w-full h-[10rem]'>
+                            <Image
+                                src={eachLink.image}
+                                alt={eachLink.label}
+                                className="size-full object-cover h-[10rem] group-hover:scale-110 transition-all duration-500"
+                            />
+                            <div className='absolute top-0 left-0 w-full h-full bg-primary/50'></div>
+                            <span className='text-semiBold w-full text-center text-2xl leading-none text-[#F8FAFC] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+                                {eachLink.label}
+                            </span>
+                        </div>
+                    </TransitionLink>
+                ))}
             </div>
         </section>
     )

@@ -19,7 +19,7 @@ const contactData = {
             url: "tel:+6285804032504"
         },
         {
-            label: "[ Interior  & custom furniture ]",
+            label: "[ Interior  & Custom Furniture ]",
             value: "+62 878-8029-2388",
             url: "tel:+6287880292388"
         },

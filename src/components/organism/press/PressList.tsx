@@ -201,7 +201,7 @@ const PressList = () => {
                             return (
                                 <button
                                     key={slug}
-                                    className={`cursor-pointer p-2.5 px-5 flex items-center gap-2.5 text-base transition-all duration-500 ease-in-out shrink-0 w-fit ${activeFilter === slug
+                                    className={`cursor-pointer p-2.5 px-5 flex items-center capitalize gap-2.5 text-base transition-all duration-500 ease-in-out shrink-0 w-fit ${activeFilter === slug
                                             ? "text-[#1A1A19] bg-[#F8FAFC]"
                                             : "text-[#F8FAFC] border border-[#F8FAFC] hover:bg-[#F8FAFC] hover:text-[#1A1A19]"
                                         }`}

@@ -1,4 +1,5 @@
 import { architecture, construction, interior } from "@/assets";
+import { link } from "fs";
 
 const homeExpertiseData = {
     preTitle : "[ Expertise ]",
@@ -7,14 +8,17 @@ const homeExpertiseData = {
         {
             label: "Architectural Design",
             image: architecture,
+            link: "/projects?category=architecture"
         },
         {
             label: "Construction",
             image: construction,
+            link: "/projects?category=construction"
         },
         {
-            label: "Interior Design",
+            label: "Interior",
             image: interior,
+            link: "/projects?category=interior"
         },
     ]
 
