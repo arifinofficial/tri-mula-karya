@@ -232,7 +232,7 @@ const HomeExpertise = () => {
         };
     }, [handleFocus]);
     return (
-        <section className='px-9 xl:px-21 pb-37.5 pt-25 bg-primary'>
+        <section className='px-9 xl:px-21 pb-18.5 pt-12.5 lg:pb-37.5 lg:pt-25 bg-primary'>
             <div className='grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-8'>
                 <div className='md:col-span-4'>
                     <pre className='font-sans! font-medium text-sm md:text-base'>{homeExpertiseData.preTitle}</pre>

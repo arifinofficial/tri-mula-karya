@@ -36,7 +36,7 @@ const layoutConfig = [
 const HomeProject = () => {
 
     return (
-        <section className='px-9 xl:px-21 py-25 bg-primary z-10 relative'>
+        <section className='px-9 xl:px-21 py-12.5 lg:py-25 bg-primary z-10 relative'>
             <div className='flex flex-col gap-4 lg:gap-5'>
                 <pre className='font-sans! font-medium text-sm md:text-base'>{homeProjectData.preTitle}</pre>
                 <div className='flex flex-row justify-between items-end'>

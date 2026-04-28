@@ -45,28 +45,28 @@ const Footer = () => {
                 </div>
                 <div className='md:col-span-5 md:col-start-8'>
                     <div className='flex flex-col gap-y-8 gap-12.5'>
-                        <div className='flex flex-col gap-3.75'>
+                        <div className='flex flex-col gap-2'>
                             <span className='text-small md:text-base text-foreground/70'>{footerData.contact.label}</span>
-                            <p className='text-lg xl:text-xl'>{footerData.contact.address}</p>
-                            <Link href={footerData.contact.email.url} className=" w-fit text-lg text-foreground xl:text-xl relative before:absolute before:left-0 before:bottom-0 before:h-px before:w-full before:bg-[#F8FAFC] before:scale-x-0 before:origin-right before:transition-transform before:duration-300 hover:before:scale-x-100 hover:before:origin-left " >
+                            <p className='text-base xl:text-lg'>{footerData.contact.address}</p>
+                            <Link href={footerData.contact.email.url} className=" w-fit text-base text-foreground xl:text-lg relative before:absolute before:left-0 before:bottom-0 before:h-px before:w-full before:bg-[#F8FAFC] before:scale-x-0 before:origin-right before:transition-transform before:duration-300 hover:before:scale-x-100 hover:before:origin-left " >
                                 {footerData.contact.email.label}
                             </Link>
                         </div>
                         <div className='flex flex-col lg:flex-row gap-y-8 gap-15'>
                             {footerData.contact.phone.map((item, index) => (
-                                <div className='flex flex-col gap-3.75' key={index}>
+                                <div className='flex flex-col gap-2' key={index}>
                                     <span className='text-small md:text-base text-foreground/70'>{item.label}</span>
-                                    <Link href={item.url} className=" w-fit text-lg text-foreground xl:text-xl relative before:absolute before:left-0 before:bottom-0 before:h-px before:w-full before:bg-[#F8FAFC] before:scale-x-0 before:origin-right before:transition-transform before:duration-300 hover:before:scale-x-100 hover:before:origin-left " >
+                                    <Link href={item.url} className=" w-fit text-base text-foreground xl:text-lg relative before:absolute before:left-0 before:bottom-0 before:h-px before:w-full before:bg-[#F8FAFC] before:scale-x-0 before:origin-right before:transition-transform before:duration-300 hover:before:scale-x-100 hover:before:origin-left " >
                                         {item.value}
                                     </Link>
                                 </div>
                             ))}
                         </div>
-                        <div className='flex flex-col gap-3.75'>
+                        <div className='flex flex-col gap-2'>
                             <span className='text-small md:text-base text-foreground/70'>{footerData.contact.social.label}</span>
                             <div className='flex flex-wrap gap-5'>
                                 {footerData.contact.social.socialItems.map((item, index) => (
-                                    <Link href={item.url} key={index} className=" w-fit text-lg text-foreground xl:text-xl relative before:absolute before:left-0 before:bottom-0 before:h-px before:w-full before:bg-[#F8FAFC] before:scale-x-0 before:origin-right before:transition-transform before:duration-300 hover:before:scale-x-100 hover:before:origin-left " >
+                                    <Link href={item.url} key={index} className=" w-fit text-base text-foreground xl:text-lg relative before:absolute before:left-0 before:bottom-0 before:h-px before:w-full before:bg-[#F8FAFC] before:scale-x-0 before:origin-right before:transition-transform before:duration-300 hover:before:scale-x-100 hover:before:origin-left " >
                                         {item.label}
                                     </Link>
                                 ))}

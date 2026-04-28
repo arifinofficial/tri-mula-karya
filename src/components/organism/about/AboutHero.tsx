@@ -4,7 +4,7 @@ import React from 'react'
 
 const AboutHero = () => {
     return (
-        <section className='pt-50 pb-37.5 px-9 xl:px-21 bg-primary border-b border-foreground/30 md:border-0'>
+        <section className='pt-35 lg:pt-50 pb-18.5 lg:pb-37.5 px-9 xl:px-21 bg-primary border-b border-foreground/30 md:border-0'>
             <div className='grid grid-cols-1 md:grid-cols-12 gap-y-12.5 gap-4 lg:gap-8 md:gap-y-52! '>
                 <div className=' md:col-span-4 md:row-span-2'>
                     <Image src={aboutHeroData.image1} className='aspect-3/4 object-cover w-full h-full' alt="Tri Mula Karya - image" />

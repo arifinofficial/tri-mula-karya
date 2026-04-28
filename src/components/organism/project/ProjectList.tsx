@@ -295,8 +295,8 @@ const ProjectList = () => {
     const filterRef = useRef(initialFilter);
 
     const categories = useMemo(() => {
-        return Array.from(new Set(projectData.map((p) => p.category)));
-    }, []);
+    return Array.from(new Set(projectData.map((p) => p.category))).sort();
+}, []);
 
     const visibleCount =
         activeFilter === "all"
@@ -419,7 +419,7 @@ const ProjectList = () => {
     }, [activeFilter]);
 
     return (
-        <section className="pt-50 pb-25 px-9 xl:px-21 bg-primary border-b border-foreground/30 md:border-0">
+        <section className="pt-35 lg:pt-50 pb-25 px-9 xl:px-21 bg-primary border-b border-foreground/30 md:border-0">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-8">
                 <div className="md:col-span-3">
                     <pre className="font-sans! font-medium text-sm md:text-base">
@@ -435,7 +435,7 @@ const ProjectList = () => {
 
             <div className="my-12.5 lg:my-25 w-full h-px bg-foreground/30"></div>
 
-            <div className="flex flex-col gap-25 lg:gap-50">
+            <div className="flex flex-col gap-12.5 lg:gap-50">
                 {/* Filters */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-8">
                     <div className="md:col-span-3 hidden md:flex flex-row gap-4 items-center">
@@ -445,7 +445,7 @@ const ProjectList = () => {
                         </span>
                     </div>
 
-                    <div className="md:col-span-8 md:col-start-5 flex overflow-x-auto md:overflow-x-visible md:flex-wrap gap-4 lg:gap-7.5 md:justify-end scrollbar-none">
+                    <div className="md:col-span-8 md:col-start-5 flex overflow-x-auto pb-2 md:pb-0 md:overflow-x-visible md:flex-wrap gap-4 lg:gap-7.5 md:justify-end scrollbar-none">
                         <button
                             className={`hidden md:flex cursor-pointer p-2.5 px-5 items-center gap-2.5 text-base transition-all duration-500 ease-in-out shrink-0 w-fit ${
                                 activeFilter === "all"

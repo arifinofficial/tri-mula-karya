@@ -6,7 +6,7 @@ import React from 'react'
 
 const HomeAbout = () => {
     return (
-        <section className='px-9 xl:px-21 pt-37.5 pb-25 bg-primary z-10 relative '>
+        <section className='px-9 xl:px-21 pt-18.5 pb-12.5 lg:pt-37.5 lg:pb-25 bg-primary z-10 relative '>
             <div className='flex flex-col md:flex-row md:justify-between gap-4 lg:gap-8'>
                 <pre className='font-sans! font-medium text-sm md:text-base md:order-1'>{homeAboutData.preTitle}</pre>
                 <h2 className='lg:w-7/12 xl:w-6/12 text-3xl md:text-5xl xl:text-6xl font-medium'>{homeAboutData.title}</h2>

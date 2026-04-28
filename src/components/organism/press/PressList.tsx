@@ -45,7 +45,7 @@ const PressList = () => {
     const filterRef = useRef("all");
 
     const categories = useMemo(() => {
-        return Array.from(new Set(pressData.map((p) => p.category)));
+        return Array.from(new Set(pressData.map((p) => p.category))).sort();
     }, []);
 
     const visibleCount =
@@ -159,7 +159,7 @@ const PressList = () => {
     }, [activeFilter]);
 
     return (
-        <section className="pt-50 pb-25 px-9 xl:px-21 bg-primary border-b border-foreground/30 md:border-0">
+        <section className="pt-35 lg:pt-50 pb-25 px-9 xl:px-21 bg-primary border-b border-foreground/30 md:border-0">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-8">
                 <div className="md:col-span-3">
                     <pre className="font-sans! font-medium text-sm md:text-base">
@@ -188,8 +188,8 @@ const PressList = () => {
                     <div className="md:col-span-8 md:col-start-5 flex flex-wrap gap-4 lg:gap-7.5 md:justify-end">
                         <button
                             className={`cursor-pointer p-2.5 px-5 flex items-center gap-2.5 text-base transition-all duration-500 ease-in-out shrink-0 w-fit ${activeFilter === "all"
-                                    ? "text-[#1A1A19] bg-[#F8FAFC]"
-                                    : "text-[#F8FAFC] border border-[#F8FAFC] hover:bg-[#F8FAFC] hover:text-[#1A1A19]"
+                                ? "text-[#1A1A19] bg-[#F8FAFC]"
+                                : "text-[#F8FAFC] border border-[#F8FAFC] hover:bg-[#F8FAFC] hover:text-[#1A1A19]"
                                 }`}
                             onClick={() => handleFilter("all")}
                         >
@@ -202,8 +202,8 @@ const PressList = () => {
                                 <button
                                     key={slug}
                                     className={`cursor-pointer p-2.5 px-5 flex items-center capitalize gap-2.5 text-base transition-all duration-500 ease-in-out shrink-0 w-fit ${activeFilter === slug
-                                            ? "text-[#1A1A19] bg-[#F8FAFC]"
-                                            : "text-[#F8FAFC] border border-[#F8FAFC] hover:bg-[#F8FAFC] hover:text-[#1A1A19]"
+                                        ? "text-[#1A1A19] bg-[#F8FAFC]"
+                                        : "text-[#F8FAFC] border border-[#F8FAFC] hover:bg-[#F8FAFC] hover:text-[#1A1A19]"
                                         }`}
                                     onClick={() => handleFilter(slug)}
                                 >
