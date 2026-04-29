@@ -65,20 +65,21 @@ export const Navbar = () => {
 
     const socialLinks = [
         { name: 'Instagram', href: '#' },
-        { name: 'Youtube', href: '#' },
-        { name: 'Facebook', href: '#' }
+        { name: 'TikTok', href: '#' },
+        { name: 'Threads', href: '#' }
     ]
 
     const navLinks = [
+        { label: 'About', href: '/about-us' },
         { label: 'Projects', href: '/projects' },
-        { label: 'About Us', href: '/about-us' },
         { label: 'Press', href: '/press' },
+        { label: 'Contact', href: '/contact' },
     ]
 
     const isMenuActive = isOpen || isAnimating
     const textColor = 'text-[#F8FAFC]'
     const currentLogo = isMenuActive ? logoBlack : logo
-    const burgerColor = isMenuActive ? '#1A1A19' : '#1A1A19'
+    const burgerColor = isMenuActive ? '#1A1A19' : '#FFF'
     const slideItems = isScrolled && !isMenuActive
     const desktopBurgerVisible = slideItems || isMenuActive
 
@@ -123,7 +124,7 @@ export const Navbar = () => {
 
                         {/* Desktop burger — margin-left transitions with width so no leftover gap */}
                         <div
-                            className={`nav-burger-desktop-wrapper hover:bg-[#D4D5D7]! transition-all duration-500 ease-in-out ${desktopBurgerVisible ? 'is-visible' : 'is-hidden'}`}
+                            className={`nav-burger-desktop-wrapper transition-all duration-500 ease-in-out ${desktopBurgerVisible ? 'is-visible' : 'is-hidden'}`}
                             onClick={toggleMenu}
                         >
                             <div className={`nav-burger-desktop-icon ${isMenuActive ? 'open' : ''}`}>
@@ -192,10 +193,13 @@ export const Navbar = () => {
 
                         {/* Desktop burger — margin-left transitions with width so no leftover gap */}
                         <div
-                            className={`nav-burger-desktop-wrapper hover:bg-[#D4D5D7]! transition-all duration-500 ease-in-out ${desktopBurgerVisible ? 'is-visible' : 'is-hidden'}`}
+                            className={`nav-burger-desktop-wrapper transition-all duration-500 ease-in-out ${desktopBurgerVisible ? 'is-visible' : 'is-hidden'}`}
                             onClick={toggleMenu}
                         >
-                            <div className={`nav-burger-desktop-icon ${isMenuActive ? 'open' : ''}`}>
+                            <div
+                                className={`nav-burger-desktop-icon ${isMenuActive ? 'open' : ''}`}
+                                style={{ '--desktop-burger-color': isMenuActive ? '#1A1A19' : '#FFF' } as React.CSSProperties}
+                            >
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -205,7 +209,7 @@ export const Navbar = () => {
                     </div>
 
                     {/* Mobile burger */}
-                    <div className='p-[0.575rem] bg-foreground nav-burger-wrapper hover:bg-[#D4D5D7] transition-all duration-500 ease-in-out'>
+                    <div className='p-[0.575rem] nav-burger-wrapper  transition-all duration-500 ease-in-out'>
                         <div
                             id="nav-burger"
                             className={`${isMenuActive ? 'open' : ''}`}

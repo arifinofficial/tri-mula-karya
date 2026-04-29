@@ -280,7 +280,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #F8FAFC;
+  /* background: #F8FAFC; */
   cursor: pointer;
   flex-shrink: 0;
   overflow: hidden;
@@ -325,12 +325,16 @@ body {
   position: absolute;
   height: 1.5px;
   width: 100%;
-  background: #1A1A19;
+  background: var(--desktop-burger-color, #FFF);
   border-radius: 9px;
   opacity: 1;
   left: 0;
   transform: rotate(0deg);
   transition: 0.25s ease-in-out;
+}
+
+.nav-burger-desktop-icon.open span {
+  background: var(--desktop-burger-color, #1A1A19);
 }
 
 .nav-burger-desktop-icon span:nth-child(1) {

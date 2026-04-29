@@ -6,25 +6,22 @@ const footerData = {
         label: "[ Navigation ]",
         navItems: [
             {
-                label: "Home",
-                url: "/"
+                label: "About",
+                url: "/about-us"
             },
             {
                 label: "Projects",
                 url: "/projects"
             },
             {
-                label: "About Us",
-                url: "/about-us"
-            },
-            {
-                label: "Contact Us",
-                url: "/contact"
-            },
-            {
                 label: "Press",
                 url: "/press"
             },
+            {
+                label: "Contact",
+                url: "/contact"
+            },
+            
 
         ],
     },
@@ -37,14 +34,9 @@ const footerData = {
         },
         phone: [
             {
-                label: "[ Architectural & Construction ]",
+                label: "[ Phone Number ]",
                 value: "+62 858-0403-2504",
                 url: "tel:+6285804032504"
-            },
-            {
-                label: "[ Interior & custom furniture ]",
-                value: "+62 878-8029-2388",
-                url: "tel:+6287802292388"
             },
         ],
         social: {
@@ -55,12 +47,12 @@ const footerData = {
                     url: "https://www.instagram.com/"
                 },
                 {
-                    label: "Facebook",
-                    url: "https://www.facebook.com/"
+                    label: "TikTok",
+                    url: "https://www.tiktok.com/"
                 },
                 {
-                    label: "LinkedIn",
-                    url: "https://www.linkedin.com/"
+                    label: "Threads",
+                    url: "https://www.threads.net/"
                 },
             ]
         },
