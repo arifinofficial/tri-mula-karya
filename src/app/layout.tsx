@@ -41,9 +41,87 @@ const switzer = localFont({
   display: "swap",
 });
 
+const BASE_URL = "https://www.trimulakarya.com";
+
 export const metadata: Metadata = {
-  title: "Tri Mula Karya",
-  description: "Tri Mula Karya is a construction company that provides high-quality construction services with a focus on customer satisfaction and innovative solutions. With years of experience in the industry, we are committed to delivering exceptional results for our clients.",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Tri Mula Karya — Architecture, Construction & Interior in Bali",
+    template: "%s | Tri Mula Karya",
+  },
+  description:
+    "Tri Mula Karya is a trusted architecture, construction, and interior design company in Denpasar, Bali. We bring your dream spaces to life with high-quality craftsmanship and years of experience.",
+  keywords: [
+    "contractor Bali",
+    "architect Denpasar",
+    "interior design Bali",
+    "construction company Bali",
+    "home design Bali",
+    "Tri Mula Karya",
+    "villa construction Bali",
+    "architecture Bali",
+    "building contractor Denpasar",
+    "design and build Bali",
+  ],
+  authors: [{ name: "Tri Mula Karya", url: BASE_URL }],
+  creator: "Tri Mula Karya",
+  publisher: "Tri Mula Karya",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: BASE_URL,
+    siteName: "Tri Mula Karya",
+    title: "Tri Mula Karya — Architecture, Construction & Interior in Bali",
+    description:
+      "Tri Mula Karya is a trusted architecture, construction, and interior design company in Denpasar, Bali. We bring your dream spaces to life.",
+    images: [
+      {
+        url: "/favicon/apple-icon-180x180.png",
+        width: 180,
+        height: 180,
+        alt: "Tri Mula Karya",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Tri Mula Karya — Architecture, Construction & Interior in Bali",
+    description:
+      "Tri Mula Karya is a trusted architecture, construction, and interior design company in Denpasar, Bali.",
+    images: ["/favicon/apple-icon-180x180.png"],
+  },
+  alternates: {
+    canonical: BASE_URL,
+  },
+  icons: {
+    icon: [
+      { url: "/favicon/favicon.ico" },
+      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+    ],
+    apple: [
+      { url: "/favicon/apple-icon.png" },
+      { url: "/favicon/apple-icon-57x57.png", sizes: "57x57", type: "image/png" },
+      { url: "/favicon/apple-icon-60x60.png", sizes: "60x60", type: "image/png" },
+      { url: "/favicon/apple-icon-72x72.png", sizes: "72x72", type: "image/png" },
+      { url: "/favicon/apple-icon-76x76.png", sizes: "76x76", type: "image/png" },
+      { url: "/favicon/apple-icon-114x114.png", sizes: "114x114", type: "image/png" },
+      { url: "/favicon/apple-icon-120x120.png", sizes: "120x120", type: "image/png" },
+      { url: "/favicon/apple-icon-144x144.png", sizes: "144x144", type: "image/png" },
+      { url: "/favicon/apple-icon-152x152.png", sizes: "152x152", type: "image/png" },
+      { url: "/favicon/apple-icon-180x180.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      { rel: "apple-touch-icon-precomposed", url: "/favicon/apple-icon-precomposed.png" },
+    ],
+  },
+  manifest: "/favicon/manifest.json",
 };
 
 export default function RootLayout({
