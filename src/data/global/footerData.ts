@@ -27,7 +27,7 @@ const footerData = {
     },
     contact: {
         label: "[ Get in Touch ]",
-        address: "Jl. Pulau moyo perumahan jadi pesona VII no. 2 Pedungan, Denpasar 80222",
+        address: "Jl. Sumatera, Dauh Puri Kangin, Kec. Denpasar Bar., Kota Denpasar, Bali 80232",
         email: {
             label: "info@trimulakarya.com",
             url: "mailto:info@trimulakarya.com"
