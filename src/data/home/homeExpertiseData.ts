@@ -6,7 +6,7 @@ const homeExpertiseData = {
     title: "Our Professional Expertise in Creating Functional and Timeless Spaces",
     expertiseItems: [
         {
-            label: "Architectural Design",
+            label: "Architecture Design",
             image: architecture,
             link: "/projects?category=architecture"
         },

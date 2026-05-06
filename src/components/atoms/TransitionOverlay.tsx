@@ -21,7 +21,7 @@ export const TransitionOverlay = () => {
         <path
           id="transition-path"
           d="M 0 0 L 0 0 L 0 0 Z"
-          fill="#000"
+          fill="#090909"
         />
       </svg>
 
