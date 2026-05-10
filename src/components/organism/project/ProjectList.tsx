@@ -1,7 +1,10 @@
+// ====================================================== Sekat ======================================================
+
 // // src/components/organism/project/ProjectList.tsx
 // "use client";
 
-// import { useState, useMemo, useRef, useEffect } from "react";
+// import { useState, useMemo, useRef, useEffect,} from "react";
+// import { useSearchParams, useRouter } from "next/navigation";
 // import projectData from "@/data/global/projectData";
 // import projectListData from "@/data/projects/projectListData";
 // import Image from "next/image";
@@ -10,15 +13,20 @@
 // const slugify = (str: string) => str.trim().replace(/\s+/g, "-");
 
 // const ProjectList = () => {
-//     // activeFilter hanya dipakai untuk styling tombol & counter teks
-//     const [activeFilter, setActiveFilter] = useState("all");
+//     const searchParams = useSearchParams();
+//     const router = useRouter();
+
+//     // Baca initial filter dari URL param ?category=...
+//     const initialFilter = searchParams.get("category") ?? "all";
+
+//     const [activeFilter, setActiveFilter] = useState(initialFilter);
 //     const containerRef = useRef<HTMLDivElement>(null);
 //     const isAnimating = useRef(false);
-//     const filterRef = useRef("all");
+//     const filterRef = useRef(initialFilter);
 
 //     const categories = useMemo(() => {
-//         return Array.from(new Set(projectData.map((p) => p.category)));
-//     }, []);
+//     return Array.from(new Set(projectData.map((p) => p.category))).sort();
+// }, []);
 
 //     const visibleCount =
 //         activeFilter === "all"
@@ -40,6 +48,15 @@
 //         };
 //         run();
 //     }, []);
+
+//     // Sinkronisasi filter jika user navigasi back/forward (browser history)
+//     useEffect(() => {
+//         const param = searchParams.get("category") ?? "all";
+//         if (param !== filterRef.current) {
+//             handleFilter(param);
+//         }
+//         // eslint-disable-next-line react-hooks/exhaustive-deps
+//     }, [searchParams]);
 
 //     const handleFilter = async (newFilter: string) => {
 //         if (newFilter === filterRef.current || isAnimating.current) return;
@@ -68,11 +85,6 @@
 //         // Kill semua animasi yang sedang berjalan
 //         gsap.killTweensOf(allItems);
 
-//         // 1. Fade + slide up leaving items
-//         // 2. Bersamaan, fade out entering items sedikit (akan fade in lagi dengan posisi baru)
-//         // 3. Setelah semua selesai, update React state → re-render dengan layout baru
-//         // 4. Setelah re-render, fade in items baru
-
 //         const tl = gsap.timeline();
 
 //         if (leaving.length > 0) {
@@ -93,8 +105,17 @@
 //         );
 
 //         tl.call(() => {
-//             // Update React state — trigger re-render dengan layout baru
+//             // Update React state
 //             setActiveFilter(newFilter);
+
+//             // Update URL param tanpa full reload
+//             const params = new URLSearchParams(searchParams.toString());
+//             if (newFilter === "all") {
+//                 params.delete("category");
+//             } else {
+//                 params.set("category", newFilter);
+//             }
+//             router.replace(`?${params.toString()}`, { scroll: false });
 //         });
 
 //         // Tunggu 2 frame agar React selesai render + browser paint
@@ -103,10 +124,8 @@
 //                 const newItems = Array.from(
 //                     container.querySelectorAll<HTMLElement>(".project-item")
 //                 );
-//                 // Pastikan semua invisible dulu (handle kasus React re-render)
 //                 gsap.set(newItems, { opacity: 0, y: 16 });
 
-//                 // Fade in semua item baru
 //                 gsap.to(newItems, {
 //                     opacity: 1,
 //                     y: 0,
@@ -119,19 +138,18 @@
 //                 });
 //             },
 //             [],
-//             // Delay cukup untuk React render + 2 RAF
 //             "+=0.05"
 //         );
 //     };
 
-//     // Filtered projects untuk di-render — index di-reset agar layoutConfig dari 0
+//     // Filtered projects untuk di-render
 //     const filteredProjects = useMemo(() => {
 //         if (activeFilter === "all") return projectData;
 //         return projectData.filter((p) => slugify(p.category) === activeFilter);
 //     }, [activeFilter]);
 
 //     return (
-//         <section className="pt-50 pb-25 px-9 xl:px-21 bg-primary border-b border-foreground/30 md:border-0">
+//         <section className="pt-35 lg:pt-50 pb-25 px-9 xl:px-21 bg-primary border-b border-foreground/30 md:border-0">
 //             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-8">
 //                 <div className="md:col-span-3">
 //                     <pre className="font-sans! font-medium text-sm md:text-base">
@@ -147,19 +165,19 @@
 
 //             <div className="my-12.5 lg:my-25 w-full h-px bg-foreground/30"></div>
 
-//             <div className="flex flex-col gap-25 lg:gap-50">
+//             <div className="flex flex-col gap-12.5 lg:gap-50">
 //                 {/* Filters */}
 //                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-8">
-//                     <div className="md:col-span-3 flex flex-row gap-4 items-center">
+//                     <div className="md:col-span-3 hidden md:flex flex-row gap-4 items-center">
 //                         <div className="w-3 h-3 bg-foreground"></div>
 //                         <span className="text-lg md:text-2xl xl:text-[2rem] font-normal">
 //                             Filters
 //                         </span>
 //                     </div>
 
-//                     <div className="md:col-span-8 md:col-start-5 flex flex-wrap gap-4 lg:gap-7.5 md:justify-end">
+//                     <div className="md:col-span-8 md:col-start-5 flex overflow-x-auto pb-2 md:pb-0 md:overflow-x-visible md:flex-wrap gap-4 lg:gap-7.5 md:justify-end scrollbar-none">
 //                         <button
-//                             className={`cursor-pointer p-2.5 px-5 flex items-center gap-2.5 text-base transition-all duration-500 ease-in-out shrink-0 w-fit ${
+//                             className={`hidden md:flex cursor-pointer p-2.5 px-5 items-center gap-2.5 text-base transition-all duration-500 ease-in-out shrink-0 w-fit ${
 //                                 activeFilter === "all"
 //                                     ? "text-[#1A1A19] bg-[#F8FAFC]"
 //                                     : "text-[#F8FAFC] border border-[#F8FAFC] hover:bg-[#F8FAFC] hover:text-[#1A1A19]"
@@ -203,7 +221,6 @@
 //                         className="grid grid-cols-12 gap-2 lg:gap-8 gap-y-10 lg:gap-y-16"
 //                     >
 //                         {filteredProjects.map((project, index) => {
-//                             // const config = layoutConfig[index % layoutConfig.length];
 //                             const categorySlug = slugify(project.category);
 
 //                             return (
@@ -211,8 +228,6 @@
 //                                     key={project.slug}
 //                                     data-slug={project.slug}
 //                                     data-category={categorySlug}
-//                                     // opacity: 0 default — GSAP yang akan set ke 1
-//                                     // Ini mencegah flash saat item baru mount
 //                                     style={{ opacity: 0 }}
 //                                     className={`project-item col-span-12 md:col-span-6`}
 //                                 >
@@ -268,12 +283,12 @@
 // export default ProjectList;
 
 
-// ====================================================== Sekat ======================================================
+// ====================================================== Sekat 2 ======================================================
 
 // src/components/organism/project/ProjectList.tsx
 "use client";
 
-import { useState, useMemo, useRef, useEffect } from "react";
+import { useState, useMemo, useRef, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import projectData from "@/data/global/projectData";
 import projectListData from "@/data/projects/projectListData";
@@ -282,11 +297,10 @@ import { TransitionLink } from "@/components/atoms/TransitionLink";
 
 const slugify = (str: string) => str.trim().replace(/\s+/g, "-");
 
-const ProjectList = () => {
+const ProjectListInner = () => {
     const searchParams = useSearchParams();
     const router = useRouter();
 
-    // Baca initial filter dari URL param ?category=...
     const initialFilter = searchParams.get("category") ?? "all";
 
     const [activeFilter, setActiveFilter] = useState(initialFilter);
@@ -295,15 +309,14 @@ const ProjectList = () => {
     const filterRef = useRef(initialFilter);
 
     const categories = useMemo(() => {
-    return Array.from(new Set(projectData.map((p) => p.category))).sort();
-}, []);
+        return Array.from(new Set(projectData.map((p) => p.category))).sort();
+    }, []);
 
     const visibleCount =
         activeFilter === "all"
             ? projectData.length
             : projectData.filter((p) => slugify(p.category) === activeFilter).length;
 
-    // Initial entrance — set opacity 0 dulu via CSS, baru GSAP animate in
     useEffect(() => {
         const run = async () => {
             const { gsap } = await import("gsap");
@@ -319,7 +332,6 @@ const ProjectList = () => {
         run();
     }, []);
 
-    // Sinkronisasi filter jika user navigasi back/forward (browser history)
     useEffect(() => {
         const param = searchParams.get("category") ?? "all";
         if (param !== filterRef.current) {
@@ -341,7 +353,6 @@ const ProjectList = () => {
             container.querySelectorAll<HTMLElement>(".project-item")
         );
 
-        // Pisahkan item berdasarkan filter baru
         const leaving = allItems.filter((el) => {
             if (newFilter === "all") return false;
             return el.dataset.category !== newFilter;
@@ -352,7 +363,6 @@ const ProjectList = () => {
             return el.dataset.category === newFilter;
         });
 
-        // Kill semua animasi yang sedang berjalan
         gsap.killTweensOf(allItems);
 
         const tl = gsap.timeline();
@@ -367,18 +377,15 @@ const ProjectList = () => {
             });
         }
 
-        // Fade out entering items supaya tidak flicker saat re-render
         tl.to(
             entering,
             { opacity: 0, duration: 0.2, ease: "power1.in" },
-            0 // mulai bersamaan dengan leaving
+            0
         );
 
         tl.call(() => {
-            // Update React state
             setActiveFilter(newFilter);
 
-            // Update URL param tanpa full reload
             const params = new URLSearchParams(searchParams.toString());
             if (newFilter === "all") {
                 params.delete("category");
@@ -388,7 +395,6 @@ const ProjectList = () => {
             router.replace(`?${params.toString()}`, { scroll: false });
         });
 
-        // Tunggu 2 frame agar React selesai render + browser paint
         tl.call(
             () => {
                 const newItems = Array.from(
@@ -412,7 +418,6 @@ const ProjectList = () => {
         );
     };
 
-    // Filtered projects untuk di-render
     const filteredProjects = useMemo(() => {
         if (activeFilter === "all") return projectData;
         return projectData.filter((p) => slugify(p.category) === activeFilter);
@@ -547,6 +552,20 @@ const ProjectList = () => {
                 </div>
             </div>
         </section>
+    );
+};
+
+const ProjectList = () => {
+    return (
+        <Suspense
+            fallback={
+                <section className="pt-35 lg:pt-50 pb-25 px-9 xl:px-21 bg-primary border-b border-foreground/30 md:border-0">
+                    <div className="animate-pulse text-foreground/50">Loading...</div>
+                </section>
+            }
+        >
+            <ProjectListInner />
+        </Suspense>
     );
 };
 
