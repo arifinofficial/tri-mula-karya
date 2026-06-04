@@ -6,7 +6,7 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <footer className='px-9 xl:px-21 pt-20 pb-25 bg-primary'>
+        <footer className='px-9 xl:px-21 pt-20 pb-25 bg-primary relative z-10'>
             <div className='grid grid-cols-1 md:grid-cols-12 gap-y-10'>
                 <div className='order-2 mt-10 md:-order-2 md:mt-0 md:col-span-2'>
                     <Image src={footerData.logo}
