@@ -80,7 +80,7 @@ const ProjectDetail = ({ data }: ProjectDetailHeroProps) => {
                     >
                         <Image
                             src={data.projectHero}
-                            alt="Tri Mula Karya - Hero Image"
+                            alt={data.projectName + " hero image"}
                             className='object-cover w-full h-full'
                             fill
                             priority
@@ -100,14 +100,16 @@ const ProjectDetail = ({ data }: ProjectDetailHeroProps) => {
                     {/* Content */}
                     <div
                         ref={contentRef}
-                        className='px-9 xl:px-21 absolute bottom-0 pb-24 lg:pb-16 left-0 w-full gap-5 md:gap-10 flex flex-col'
+                        className='px-9 xl:px-21 absolute bottom-0 pb-24 lg:pb-16 left-0 w-full gap-3 md:gap-3 flex flex-col'
                         style={{ zIndex: 30, willChange: 'transform, opacity' }}
                     >
+                        <p className='text-base lg:text-lg xl:text-xl font-medium'>{data.projectInfo.projectLocation}</p>
                         <h1 className='font-medium text-4xl md:text-6xl 2xl:text-[5rem] leading-[130%] xl:w-7/12'>
                             {data.projectName}
                         </h1>
-
-                        <div className='grid grid-cols-1 lg:grid-cols-12 gap-4 gap-y-8 lg:gap-8 items-center'>
+                        
+                        {/* project Info */}
+                        {/* <div className='grid grid-cols-1 lg:grid-cols-12 gap-4 gap-y-8 lg:gap-8 items-center'>
                             <div className='lg:col-span-5 xl:col-span-5 2xl:col-span-5'>
                                 <p className='text-lg md:text-xl 2xl:text-2xl'>
                                     {data.projectDesc}
@@ -129,7 +131,7 @@ const ProjectDetail = ({ data }: ProjectDetailHeroProps) => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </section>
@@ -149,10 +151,11 @@ const ProjectDetail = ({ data }: ProjectDetailHeroProps) => {
                             >
                                 <Image
                                     src={image}
-                                    alt=""
+                                    alt={data.projectName + " gallery image-" +(index + 1)}
                                     width={800}
                                     height={600}
-                                    className="w-full h-auto object-cover"
+                                    loading='lazy'
+                                    className="w-full h-full object-cover"
                                 />
                             </div>
                         );
