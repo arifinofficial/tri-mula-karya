@@ -75,7 +75,24 @@ const HomeProject = () => {
                                     </span>
                                 </div>
 
-                                <div className="overflow-hidden h-[1lh] lg:h-[1.2lh]">
+                                {project.projectYear ? (
+                                    <div className="overflow-hidden h-[1lh] lg:h-[1.2lh]">
+                                        <div className="flex flex-col transition-transform duration-500 group-hover:-translate-y-[0.8lh] lg:group-hover:-translate-y-[1lh] items-end">
+                                            <span className="text-sm lg:text-lg font-medium">
+                                                {project.projectYear}
+                                            </span>
+                                            <span className="text-sm lg:text-lg font-medium">
+                                                View project →
+                                            </span>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <span className="text-sm lg:text-lg font-medium">
+                                        View project →
+                                    </span>
+                                )}
+
+                                {/* <div className="overflow-hidden h-[1lh] lg:h-[1.2lh]">
                                     <div className="flex flex-col transition-transform duration-500 group-hover:-translate-y-[0.8lh] lg:group-hover:-translate-y-[1lh] items-end">
                                         <span className="text-sm lg:text-lg font-medium">
                                             {project.projectYear}
@@ -84,7 +101,7 @@ const HomeProject = () => {
                                             View project →
                                         </span>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </TransitionLink>
                     </div>
